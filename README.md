@@ -1,4 +1,4 @@
-![SUMO logo](https://github.com/ophie200/sumo/blob/master/images/Mozilla-logo.png)
+![Mozilla logo](https://github.com/ophie200/sumo/blob/master/images/mozilla-logo.jpg)
 
 # LTV on GCP
 > Additional information or tagline
