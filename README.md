@@ -1,4 +1,4 @@
-![Mozilla logo](https://github.com/ophie200/ltv_v3/blob/master/images/mozilla.jpg)
+![Mozilla logo](https://github.com/ophie200/ltv_v3/blob/master/images/Mozilla-Logo-300x124.png)
 
 # LTV on GCP
 > Additional information or tagline
