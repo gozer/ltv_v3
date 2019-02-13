@@ -9,23 +9,7 @@ Scripts to set up LTV on GCP.
 
 To start running LTV on your local machine:
 
-```shell
-packagemanager install awesome-project
-awesome-project start
-awesome-project "Do something!"  # prints "Nah."
-```
-
-Here you should say what actually happens when you execute the code above.
-
-### Initial Configuration
-
-Some projects require initial configuration (e.g. access tokens or keys, `npm i`).
-This is the section where you would document those requirements.
-
-## Developing
-
 Set up your local drive with virtualenv using python 2.7 (latest version of Dataflow Python SDK)
-
 ```shell
 git clone https://github.com/ophie200/ltv_v3.git
 cd ltv_v3/
@@ -33,7 +17,20 @@ pip install apache-beam[gcp]
 export GOOGLE_APPLICATION_CREDENTIALS = <your json api key file here>
 ```
 
+Run Dataflow job locally using DirectRunner:
+```shell
+python ltv_beam.py --project imposing-union-227917 --temp_location gs://ltv-dataflow/tmp --staging_location gs://ltv-dataflow/staging
+```
+This will run the job using your local machine CPU/memory to process LTV data on GCP. 
+
+Create & stage template on GCP:
+```shell
+python ltv_beam.py     --runner DataflowRunner     --project imposing-union-227917     --staging_location gs://ltv-dataflow/staging     --temp_location gs://ltv-dataflow/tmp     --template_location gs://ltv-dataflow/templates/ltv-dataflow-template --requirements_file requirements.txt
 And state what happens step-by-step.
+```
+This packages the Dataflow pipeline defined in ltv_beam.py into an executable and add any required libraries to the staging_location. The template job references the packaged pipeline and is defined in template_location.
+
+
 
 ### Building
 
