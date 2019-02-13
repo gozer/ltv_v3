@@ -1,0 +1,7 @@
+{
+  "name": "gcf-trigger-beam3-template",
+  "version": "0.0.1",
+  "dependencies": {
+    "googleapis": "^33.0.0"
+  }
+}
