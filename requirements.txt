@@ -1,6 +1,2 @@
-dill
-Lifetimes
-numpy
-pandas
-scipy
-google-cloud-storage
+Lifetimes==0.10.1
+numpy>=1.16
