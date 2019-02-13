@@ -1,7 +1,6 @@
 ![Mozilla logo](https://github.com/ophie200/ltv_v3/blob/master/images/Mozilla-Logo-300x124.png)
 
 # LTV on GCP
-> Additional information or tagline
 
 Scripts to set up LTV on GCP.
 
@@ -25,103 +24,16 @@ This will run the job using your local machine CPU/memory to process LTV data on
 
 Create & stage template on GCP:
 ```shell
-python ltv_beam.py     --runner DataflowRunner     --project imposing-union-227917     --staging_location gs://ltv-dataflow/staging     --temp_location gs://ltv-dataflow/tmp     --template_location gs://ltv-dataflow/templates/ltv-dataflow-template --requirements_file requirements.txt
-And state what happens step-by-step.
+python ltv_beam.py --runner DataflowRunner --project imposing-union-227917 --staging_location gs://ltv-dataflow/staging --temp_location gs://ltv-dataflow/tmp --template_location gs://ltv-dataflow/templates/ltv-dataflow-template --requirements_file requirements.txt
 ```
 This packages the Dataflow pipeline defined in ltv_beam.py into an executable and add any required libraries to the staging_location. The template job references the packaged pipeline and is defined in template_location.
 
 
-
-### Building
-
-
+Execute template on dataflow as batch job:
 ```shell
-./configure
-make
-make install
+gcloud dataflow jobs run run-ltv-dataflow-template --gcs-location gs://ltv-dataflow/templates/ltv-dataflow-template
 ```
-
-### Units Tests
-
-```shell
-python setup.py test
-```
-
-Here again you should state what actually happens when the code above gets
-executed.
-
-### Deploying / Publishing
-
-In case there's some step you have to take that publishes this project to a
-server, this is the right time to state it.
-
-```shell
-packagemanager deploy awesome-project -s server.com -u username -p password
-```
-
-And again you'd need to tell what the previous code actually does.
-
-## Features
-
-What's all the bells and whistles this project can perform?
-* What's the main functionality
-* You can also do another thing
-* If you get really randy, you can even do this
-
-## Configuration
-
-Here you should write what are all of the configurations a user can enter when
-using the project.
-
-#### Argument 1
-Type: `String`  
-Default: `'default value'`
-
-State what an argument does and how you can use it. If needed, you can provide
-an example below.
-
-Example:
-```bash
-awesome-project "Some other value"  # Prints "You're nailing this readme!"
-```
-
-#### Argument 2
-Type: `Number|Boolean`  
-Default: 100
-
-Copy-paste as many of these as you need.
-
-## Contributing
-
-When you publish something open source, one of the greatest motivations is that
-anyone can just jump in and start contributing to your project.
-
-These paragraphs are meant to welcome those kind souls to feel that they are
-needed. You should state something like:
-
-"If you'd like to contribute, please fork the repository and use a feature
-branch. Pull requests are warmly welcome."
-
-If there's anything else the developer needs to know (e.g. the code style
-guide), you should link it here. If there's a lot of things to take into
-consideration, it is common to separate this section to its own file called
-`CONTRIBUTING.md` (or similar). If so, you should say that it exists here.
-
-## Links
-
-Even though this information can be found inside the project on machine-readable
-format like in a .json file, it's good to include a summary of most useful
-links to humans using your project. You can include links like:
-
-- Project homepage: https://your.github.com/awesome-project/
-- Repository: https://github.com/your/awesome-project/
-- Issue tracker: https://github.com/your/awesome-project/issues
-  - In case of sensitive bugs like security vulnerabilities, please contact
-    my@email.com directly instead of using issue tracker. We value your effort
-    to improve the security and privacy of this project!
-- Related projects:
-  - Your other project: https://github.com/your/other-project/
-  - Someone else's project: https://github.com/someones/awesome-project/
+This runs the template. You can view the progress from the Dataflow UI.
 
 
 ## Licensing
