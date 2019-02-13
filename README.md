@@ -4,7 +4,7 @@
 
 Scripts to set up LTV on GCP.
 
-## Installing / Getting started
+## Installing / Getting started with Dataflow
 
 To start running LTV on your local machine:
 
@@ -34,6 +34,27 @@ Execute template on dataflow as batch job:
 gcloud dataflow jobs run run-ltv-dataflow-template --gcs-location gs://ltv-dataflow/templates/ltv-dataflow-template
 ```
 This runs the template. You can view the progress from the Dataflow UI.
+
+Schema file used by BigQuery is located in ltv-dataflow/templates/input
+
+
+The following command will synchronize data between an Amazon S3 bucket and a Cloud Storage bucket:
+```shell
+gsutil rsync -d -r s3://my-aws-bucket gs://example-bucket
+```
+(to be set up and tested)
+
+
+## Setting up the Cloud Function trigger
+
+Upload to gcp: 
+Make sure you are in gcf directory with index.js and package.json files
+```shell
+gcloud beta functions deploy triggerDataFlowLTV --stage-bucket ltv-dataflow --trigger-bucket ltv-test-copy
+```
+
+Test GCF trigger Dataflow for ltv-beam-template:
+Upload file named _SUCCESS to ltv-test-copy bucket
 
 
 ## Licensing
