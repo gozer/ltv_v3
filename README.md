@@ -10,7 +10,7 @@ To start running LTV on your local machine:
 
 Set up your local drive with virtualenv using python 2.7 (latest version of Dataflow Python SDK)
 ```shell
-git clone https://github.com/ophie200/ltv_v3.git
+git clone https://github.com/mozilla-it-data/ltv_v3.git
 cd ltv_v3/
 pip install apache-beam[gcp]
 export GOOGLE_APPLICATION_CREDENTIALS = <your json api key file here>
