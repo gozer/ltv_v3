@@ -24,21 +24,19 @@ This is the section where you would document those requirements.
 
 ## Developing
 
-Here's a brief intro about what a developer must do in order to start developing
-the project further:
+Set up your local drive with virtualenv using python 2.7 (latest version of Dataflow Python SDK)
 
 ```shell
-git clone https://github.com/your/awesome-project.git
-cd awesome-project/
-packagemanager install
+git clone https://github.com/ophie200/ltv_v3.git
+cd ltv_v3/
+pip install apache-beam[gcp]
+export GOOGLE_APPLICATION_CREDENTIALS = <your json api key file here>
 ```
 
 And state what happens step-by-step.
 
 ### Building
 
-If your project needs some additional steps for the developer to build the
-project after some code changes, state them here:
 
 ```shell
 ./configure
